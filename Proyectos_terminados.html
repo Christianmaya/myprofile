@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="style_slider.css">
 
 <style>
+body 
 /* BARRA SCROLL*/
 
 body::-webkit-scrollbar-track {
@@ -47,7 +48,7 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar
 {
-	width: 4px;
+	width: 0px;
 	background-color: #F5F5F5;
 }
 
@@ -58,86 +59,44 @@ body::-webkit-scrollbar-thumb
 	
 }
 
+
 /*style menu principal*/
 :root {
       --ion-safe-area-top: 0px;
       --ion-safe-area-bottom: 0px;
     }
 ion-toolbar{
-background-color:#000;
-opacity: 0.9;
-}
-	
-/*ALERTA */	
-	ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+--background:#000011;
 }
 
-ul li {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color:#E72B2F;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color:#E9E0E0;
-  display: block;
-  position: relative;
+ion-content{--background:#000011;}
+
+ion-item{--background:#000011; border-bottom: 1px solid #333;}
+ion-item:hover{--background:#000022; }
+
+ion-icon {
+   color: linear-gradient(180deg, rgba(27,136,223,1) 0%, rgba(220,228,230,1) 100%); -webkit-box-shadow: 0 8px 6px -6px  #999; -moz-box-shadow: 0 8px 6px -6px#999; box-shadow: 0 8px 6px -6px #999;
 }
 
-ul li:hover {
-  background-color: #A24244;
-}
-
-.close {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  right: 0%;
-  padding: 12px 16px;
-  transform: translate(0%, -50%);
-  font-size: 36px;
-
-}
-
-.close:hover {background: #A24244; font-size: 40px;}
-/*FIN ALERTA*/
+h2 {color: #FFF;}
+p {color: #999;}
 
 
-/*BTN*/
-.btn {
-  border: none; 
-  color: white; 
-  padding: 5px 6px; 
-  cursor: pointer; 
-}
-
-.success {background-color: #4CAF50;} 
-.success:hover {background-color: #46a049;}
-
-.info {background-color: #2196F3;} 
-.info:hover {background: #0b7dda;}
-
-.warning {background-color: #ff9800;} 
-.warning:hover {background: #e68a00;}
-
-.danger {background-color: #f44336;} 
-.danger:hover {background: #da190b;}
-
-.default {background-color: #e7e7e7; color: black;} 
-.default:hover {background: #ddd;}
-/*------------------------------------------------------------------*/
+/*CSS NUEVO BOTONES*/
 .notification {
-  background-color:#4FD335;
+  background: linear-gradient(to right, #00ccff 0%, #0066ff 100%);
   color: white;
-  text-decoration: none;
+  text-decoration: none !important;
+  padding: 8px 8px;
   position: relative;
-  display: inline-block;
-  border: none; 
-  padding: 14px 28px; 
-  cursor: pointer; 
+  display: inline-block !important;
+  border-radius: 6px;
+
+}
+
+.notification:hover {
+  background: linear-gradient(to left, #00ccff 0%, #0066ff 100%);
+  color: #fff;
 }
 
 .notification .badge {
@@ -145,49 +104,86 @@ ul li:hover {
   top: -10px;
   right: -10px;
   padding: 5px 10px;
-  border-radius: 50%;
-  background: red;
+  border: 50%;
+  background-color:#EA4335;
   color: white;
 }
-/*------------------------------------------------------------------*/
 
-/*----------SLIDER---------*/
-    .swiper-container {
-      width: 100%;
-      height: 100%;
+/*======================================================================================================*/
 
-    }
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
+/* COLUMN 1 RESULTADO NUMEROS */
+.column1 {
+  float: left;
+  width: 20%;
+  padding: 0 5px;
+}
 
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-    }
-/*----------FIN---SLIDER---------*/	
+/* Style the counter cards */
+.card1 {
+  margin-top: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+  color: #12E7E4;
+  border-radius: 8px;
+
+  backdrop-filter: blur(0px) saturate(200%); 
+  -webkit-backdrop-filter: blur(0px) saturate(200%); 
+  background-color: rgba(17, 25, 40, 0.76); 
+  border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.125); 
+  -webkit-box-shadow: 0 8px 16px -6px  #00FFFF; 
+  -moz-box-shadow: 0 8px 16px -6px #00FFFF; 
+  box-shadow: 0 8px 16px -6px #00FFFF;
+}
+
+.fa {font-size:50px;}
+/*/FIN COLUMN 1 RESULTADO NUMEROS*/
+
+/*======================================================================================================*/
+
+/* COLUMN 2 PREMIOS */
+.column2 {
+  float: left;
+  width: 100%;
+  padding: 0 5px;
+}
+
+/* Style cards */
+.card2 {
+  margin-top: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
+  padding-bottom: -10px;
+  text-align: center;
+  color:#ff4d4d;
+
+  backdrop-filter: blur(0px) saturate(200%); 
+  -webkit-backdrop-filter: blur(0px) saturate(200%); 
+  background-color:#112; 
+  border-radius: 12px; 
+  border: 1px solid rgba(255, 255, 255, 0.125); 
+  -webkit-box-shadow: 0 8px 16px -6px  #00FFFF; 
+  -moz-box-shadow: 0 8px 16px -6px #00FFFF; 
+  box-shadow: 0 8px 16px -6px #00FFFF;
+}
+
+.fa {font-size:50px;}
+/* /FIN COLUMN 2 PREMIOS */
+
+/*======================================================================================================*/
+
+
 </style>
 </head>
 
-<body style=" background-image:url(img/00.png);
-font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; 
-word-wrap: break-word
-">
+<body style="background-color: #081023; background-image: 
+	radial-gradient(at 47% 33%, hsl(253.50, 79%, 16%) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(220.00, 41%, 21%) 0, transparent 55%">
 
 <!--FACEBOOK-->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v5.0&appId=1945954765651298&autoLogAppEvents=1"></script>
+<!--FIN-->
 
 <!--<ul>
 <li><strong>ADVERTENCIA >>> </strong> Esta página contiene producto que sólo una persona con la mayoría de edad exigible a nivel nacional puede solicitar. Por favor seamos responsable! Muchas gracias...<span class="close">&times;</span></li>
@@ -202,47 +198,41 @@ for (i = 0; i < closebtns.length; i++) {
   });
 }
 </script>-->
-
 <header>
  <ion-app>
     <ion-menu side="start">
       <ion-header>
         <ion-toolbar translucent>
-          <ion-title>Menú principal >></ion-title>
+          <ion-title style="color:#FFF;">Menú Principal:</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list>
-		
-          <a href="index.html"><ion-item>
-            <ion-icon name="home" slot="start"></ion-icon>
-            <ion-label>Inicio</ion-label>
-          </ion-item></a>
+        <ion-list style="background:#000011;">
+        
+          <ion-item href="index.html" style="color:#666; border-top:1px solid #333;">
+            <ion-icon name="home" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Inicio</ion-label>
+          </ion-item>
+          
+          <ion-item href="habilidades.html">
+            <ion-icon name="code-working" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Habilidades</ion-label>
+          </ion-item>
 
-          <a href="habilidades.html">
+          <ion-item href="Proyectos_terminados.html">
+            <ion-icon name="logo-buffer" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Proyectos</ion-label>
+          </ion-item>
+        
+          <ion-item href="https://api.whatsapp.com/send?phone=5491170013346&text=Hola%20Christian!%20necesito%20un%20Sitio%20Web!">
+            <ion-icon name="chatbubbles" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Chat</ion-label>
+          </ion-item>
+          
           <ion-item>
-            <ion-icon name="code-working" slot="start"></ion-icon>
-            <ion-label>Habilidades</ion-label>
-          </ion-item></a>
-
-          <a href="Proyectos_terminados.html">
-          <ion-item>
-            <ion-icon name="logo-buffer" slot="start"></ion-icon>
-            <ion-label>Proyectos</ion-label>
-          </ion-item></a>
-		  
-		  <a href="https://api.whatsapp.com/send?phone=5491170013346&text=Hola%20Christian!%20necesito%20un%20Sitio%20Web!">
-          <ion-item>
-            <ion-icon name="chatbubbles" slot="start"></ion-icon>
-            <ion-label>Chat</ion-label>
-          </ion-item></a>
-		  
-          <a href="https://www.google.com.ar/">
-		  <ion-item>
-		    <ion-icon name="logo-chrome" slot="start"></ion-icon>
-            <ion-label>Ir a Google</ion-label>
-          </ion-item></a>
-		  
+            <ion-icon name="radio-button-on" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">2019 - 2024</ion-label>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>
@@ -250,13 +240,13 @@ for (i = 0; i < closebtns.length; i++) {
     <div class="ion-page" main>
       <ion-header>
         <ion-toolbar>
-          <ion-buttons slot="start">
+          <ion-buttons slot="start" style="color:#FFF;">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-title style="font-family: 'Great Vibes', cursive; font-size:30px;">Christian Quintana</ion-title>
+          <ion-title style="font-family: 'Great Vibes', cursive; font-size:30px; color:#F8F8FF;">Christian Quintana</ion-title>
         </ion-toolbar>
   </ion-app>
-  <ion-menu-controller style="background-color:aqua;"></ion-menu-controller>
+  <ion-menu-controller></ion-menu-controller>
 </header>
 <!--fin header-->
 
