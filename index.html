@@ -233,41 +233,36 @@ for (i = 0; i < closebtns.length; i++) {
     <ion-menu side="start">
       <ion-header>
         <ion-toolbar translucent>
-          <ion-title style="color:#FFF;">Menú principal >></ion-title>
+          <ion-title style="color:#FFF;">Menú Principal:</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
         <ion-list style="background:#000011;">
-		
-          <a href="index.html"><ion-item style="color:#666; border-top:1px solid #333;">
+        
+          <ion-item href="#" style="color:#666; border-top:1px solid #333;">
             <ion-icon name="home" slot="start" style="color:#666;"></ion-icon>
             <ion-label style="color:#F4F6F7;">Inicio</ion-label>
-          </ion-item></a>
+          </ion-item>
+          
+          <ion-item href="#">
+            <ion-icon name="person-add" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Ingreso de usuario</ion-label>
+          </ion-item>
 
-          <a href="habilidades.html">
+          <ion-item href="#">
+            <ion-icon name="newspaper" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Novedades</ion-label>
+          </ion-item>
+        
+          <ion-item href="https://api.whatsapp.com/send?phone=5491170013346&text=Hola!%20Quiero%20ser%20sucriptor%20necesito%20ayuda!">
+            <ion-icon name="chatbubbles" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Ayuda</ion-label>
+          </ion-item>
+          
           <ion-item>
-            <ion-icon name="code-working" slot="start"></ion-icon>
-            <ion-label>Habilidades</ion-label>
-          </ion-item></a>
-
-          <a href="Proyectos_terminados.html">
-          <ion-item>
-            <ion-icon name="logo-buffer" slot="start"></ion-icon>
-            <ion-label>Proyectos</ion-label>
-          </ion-item></a>
-		  
-		  <a href="https://api.whatsapp.com/send?phone=5491170013346&text=Hola%20Christian!%20necesito%20un%20Sitio%20Web!">
-          <ion-item>
-            <ion-icon name="chatbubbles" slot="start"></ion-icon>
-            <ion-label>Chat</ion-label>
-          </ion-item></a>
-		  
-          <a href="https://www.google.com.ar/">
-		  <ion-item>
-		    <ion-icon name="logo-chrome" slot="start"></ion-icon>
-            <ion-label>Ir a Google</ion-label>
-          </ion-item></a>
-		  
+            <ion-icon name="radio-button-on" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">2019 - 2022</ion-label>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>
@@ -275,13 +270,13 @@ for (i = 0; i < closebtns.length; i++) {
     <div class="ion-page" main>
       <ion-header>
         <ion-toolbar>
-          <ion-buttons slot="start">
+          <ion-buttons slot="start" style="color:#FFF;">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-title style="font-family: 'Great Vibes', cursive; font-size:30px;">Christian Quintana</ion-title>
+          <ion-title><a href="#"><img src="../images/footer-logo.png" style="width:200px; height: auto;"></a></ion-title>
         </ion-toolbar>
   </ion-app>
-  <ion-menu-controller style="background-color:aqua;"></ion-menu-controller>
+  <ion-menu-controller></ion-menu-controller>
 </header>
 <!--fin header-->
 
