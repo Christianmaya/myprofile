@@ -117,10 +117,12 @@ body > section {
 @media screen and (max-width: 1000px) {
 	body > section {
 		padding: 20px 10px;
-		width:90%;
 	}
 }
 @media screen and (max-width: 600px) {
+	body { 
+		width: 100%;
+	     }
 	main {
 		float: none;
 		width: 100%;
