@@ -37,6 +37,7 @@ nav ul li a {
 }
 nav ul li a:hover {
 	background: #FFF;
+	 text-decoration: none;
 }
 nav ul li {
     display: inline-block;
@@ -106,7 +107,7 @@ aside > div {
     margin-right: 10px;
 }
 body > section {
-    max-width: 1000px;
+    max-width: 100%;
     margin: auto;
     padding: 30px 0px;
     border-bottom: 1px solid #999;
