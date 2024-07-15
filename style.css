@@ -114,10 +114,10 @@ body > section {
     color: #333;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1000px) {
 	body > section {
 		padding: 10px 10px;
-		width:100%;
+		width:90%;
 	}
 }
 @media screen and (max-width: 600px) {
