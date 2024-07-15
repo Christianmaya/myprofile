@@ -120,9 +120,6 @@ body > section {
 	}
 }
 @media screen and (max-width: 600px) {
-	body > section { 
-		width: 100%;
-	     }
 	main {
 		float: none;
 		width: 100%;
