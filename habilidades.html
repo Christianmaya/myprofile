@@ -187,14 +187,14 @@ ul li:hover {
 </style>
 </head>
 
-<body style=" background-image:url(img/00.png);
-font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; 
-word-wrap: break-word
-">
+<body style="background-color: #081023; background-image: 
+	radial-gradient(at 47% 33%, hsl(253.50, 79%, 16%) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(220.00, 41%, 21%) 0, transparent 55%">
 
 <!--FACEBOOK-->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v5.0&appId=1945954765651298&autoLogAppEvents=1"></script>
+<!--FIN-->
 
 <!--<ul>
 <li><strong>ADVERTENCIA >>> </strong> Esta página contiene producto que sólo una persona con la mayoría de edad exigible a nivel nacional puede solicitar. Por favor seamos responsable! Muchas gracias...<span class="close">&times;</span></li>
@@ -209,47 +209,41 @@ for (i = 0; i < closebtns.length; i++) {
   });
 }
 </script>-->
-
 <header>
  <ion-app>
     <ion-menu side="start">
       <ion-header>
         <ion-toolbar translucent>
-          <ion-title>Menú principal >></ion-title>
+          <ion-title style="color:#FFF;">Menú Principal:</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list>
-		
-          <a href="index.html"><ion-item>
-            <ion-icon name="home" slot="start"></ion-icon>
-            <ion-label>Inicio</ion-label>
-          </ion-item></a>
+        <ion-list style="background:#000011;">
+        
+          <ion-item href="index.html" style="color:#666; border-top:1px solid #333;">
+            <ion-icon name="home" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Inicio</ion-label>
+          </ion-item>
+          
+          <ion-item href="habilidades.html">
+            <ion-icon name="code-working" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Habilidades</ion-label>
+          </ion-item>
 
-          <a href="#">
+          <ion-item href="Proyectos_terminados.html">
+            <ion-icon name="logo-buffer" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Proyectos</ion-label>
+          </ion-item>
+        
+          <ion-item href="https://api.whatsapp.com/send?phone=5491170013346&text=Hola%20Christian!%20necesito%20un%20Sitio%20Web!">
+            <ion-icon name="chatbubbles" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">Chat</ion-label>
+          </ion-item>
+          
           <ion-item>
-            <ion-icon name="code-working" slot="start"></ion-icon>
-            <ion-label>Habilidades</ion-label>
-          </ion-item></a>
-
-          <a href="Proyectos_terminados.html">
-          <ion-item>
-            <ion-icon name="logo-buffer" slot="start"></ion-icon>
-            <ion-label>Proyectos</ion-label>
-          </ion-item></a>
-		  
-		  <a href="https://api.whatsapp.com/send?phone=5491170013346&text=Hola%20Christian!%20necesito%20un%20Sitio%20Web!">
-          <ion-item>
-            <ion-icon name="chatbubbles" slot="start"></ion-icon>
-            <ion-label>Chat</ion-label>
-          </ion-item></a>
-		  
-          <a href="https://www.google.com.ar/">
-		  <ion-item>
-		    <ion-icon name="logo-chrome" slot="start"></ion-icon>
-            <ion-label>Ir a Google</ion-label>
-          </ion-item></a>
-		  
+            <ion-icon name="radio-button-on" slot="start" style="color:#666;"></ion-icon>
+            <ion-label style="color:#F4F6F7;">2019 - 2024</ion-label>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>
@@ -257,13 +251,13 @@ for (i = 0; i < closebtns.length; i++) {
     <div class="ion-page" main>
       <ion-header>
         <ion-toolbar>
-          <ion-buttons slot="start">
+          <ion-buttons slot="start" style="color:#FFF;">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-title style="font-family: 'Great Vibes', cursive; font-size:30px;">Christian Quintana</ion-title>
+          <ion-title style="font-family: 'Great Vibes', cursive; font-size:30px; color:#F8F8FF;">Christian Quintana</ion-title>
         </ion-toolbar>
   </ion-app>
-  <ion-menu-controller style="background-color:aqua;"></ion-menu-controller>
+  <ion-menu-controller></ion-menu-controller>
 </header>
 <!--fin header-->
 
