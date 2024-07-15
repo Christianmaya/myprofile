@@ -107,7 +107,7 @@ aside > div {
     margin-right: 10px;
 }
 body > section {
-    max-width: 100%;
+    max-width: 90%;
     margin: auto;
     padding: 30px 0px;
     border-bottom: 1px solid #999;
