@@ -181,7 +181,7 @@
             // Crear tabla para mostrar los boletos generados
             let tablaHTML = "<table border='1'><th>Boleto</th>";
             tablaHTML += "<tr><td>1</td>";
-            tablaHTML += "<td>" + numerosArray.slice(0, 8).map(numero => "<td>" + numero + "</td>").join("") + "</td>";
+            tablaHTML += numerosArray.slice(0, 8).map(numero => "<td>" + numero + "</td>").join("");
             tablaHTML += "</tr>";
           
             // Generar boleto 2
@@ -193,7 +193,7 @@
             boleto2 = boleto2.concat(numerosArray.slice(8, 10));
 
             tablaHTML += "<tr><td>2</td>";
-            tablaHTML += "<td>" + boleto2.map(numero => "<td>" + numero + "</td>").join("") + "</td>";
+            tablaHTML += boleto2.map(numero => "<td>" + numero + "</td>").join("");
             tablaHTML += "</tr>";
 
             /*Puedes agregar más filas aquí según sea necesario */
