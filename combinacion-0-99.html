@@ -180,8 +180,8 @@
             // (8, 12)         | (15, 25)        | (8, 13)         | (8, 16)        | (10,15)        | (8, 10)       |
 
             // Crear tabla para mostrar los boletos generados
-            let tablaHTML = "<table border='1'><th>Boleto</th>";
-            tablaHTML += "<tr><td>1</td>";
+            let tablaHTML = "<table border='1'>";
+            tablaHTML += "<tr>";
             tablaHTML += numerosArray.slice(0, 8).map(numero => "<td>" + numero + "</td>").join("");
             tablaHTML += "</tr>";
           
@@ -193,7 +193,7 @@
             // Completar con los números restantes
             boleto2 = boleto2.concat(numerosArray.slice(8, 10));
 
-            tablaHTML += "<tr><td>2</td>";
+            tablaHTML += "<tr>";
             tablaHTML += boleto2.map(numero => "<td>" + numero + "</td>").join("");
             tablaHTML += "</tr>";
 
