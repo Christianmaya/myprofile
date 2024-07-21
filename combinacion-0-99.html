@@ -236,7 +236,7 @@
             let tablaHTML = "<table>";
             tablaHTML += "<thead><tr><th colspan='9'>Boletos</th></tr></thead>";
             tablaHTML += "<tbody>";
-            tablaHTML += "<tr><td>A</td>";
+            tablaHTML += "<tr><td style='background-color: #ffa500; color:#000;'>A</td>";
             tablaHTML += numerosArray.slice(0, 8).map(numero => "<td>" + numero + "</td>").join("");
             tablaHTML += "</tr>";
 
@@ -248,7 +248,7 @@
             // Completar con los números restantes
             boleto2 = boleto2.concat(numerosArray.slice(8, 11));
 
-            tablaHTML += "<tr><td>B</td>";
+            tablaHTML += "<tr><td style='background-color: #ffa500; color:#000;'>B</td>";
             tablaHTML += boleto2.map(numero => "<td>" + numero + "</td>").join("");
             tablaHTML += "</tr>";
 
