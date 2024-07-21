@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Combinacion ganadora con 8 aciertos</title>
+
     <style>
         *  {
             margin: 0px;
@@ -141,8 +142,8 @@
       padding: 20px;
       }
     }
-
-    /* Estilos para dispositivos móviles */
+    
+ /* Estilos para dispositivos móviles */
     @media (max-width: 600px) {
       /* Estilos para la tabla */
       table {
@@ -164,6 +165,7 @@
         color: #fff;
       }
     }
+
 
 </style>
 
@@ -232,26 +234,30 @@
             // (8, 12)         | (15, 25)        | (8, 13)         | (8, 16)        | (10,15)        | (8, 10)       |
 
             // Crear tabla para mostrar los boletos generados
-            let tablaHTML = "<table><th>Boleto</th>";
-            tablaHTML += "<tr><td>A</td>";
-            tablaHTML += numerosArray.slice(0, 8).map(numero => "<td>" + numero + "</td>").join("");
-            tablaHTML += "</tr>";
-          
-            // Generar boleto 2
-            let boleto2 = [];
-            // Tomar 4 números aleatorios del boleto 1
-            let numerosAleatorios = shuffleArray(numerosArray.slice(0, 8)).slice(0, 6); // Esto lo puedo modificar por el número que quiera
-            boleto2 = boleto2.concat(numerosAleatorios);
-            // Completar con los números restantes
-            boleto2 = boleto2.concat(numerosArray.slice(8, 10));
+            let tablaHTML = "<table>";
+tablaHTML += "<thead><tr><th colspan='9'>Boletos</th></tr></thead>";
+tablaHTML += "<tbody>";
+tablaHTML += "<tr><td>A</td>";
+tablaHTML += numerosArray.slice(0, 8).map(numero => "<td>" + numero + "</td>").join("");
+tablaHTML += "</tr>";
 
-            tablaHTML += "<tr><td>B</td>";
-            tablaHTML += boleto2.map(numero => "<td>" + numero + "</td>").join("") ;
-            tablaHTML += "</tr>";
+// Generar boleto 2
+let boleto2 = [];
+// Tomar 5 números aleatorios del boleto 1
+let numerosAleatorios = shuffleArray(numerosArray.slice(0, 8)).slice(0, 5); // Esto lo puedes modificar por el número que quieras
+boleto2 = boleto2.concat(numerosAleatorios);
+// Completar con los números restantes
+boleto2 = boleto2.concat(numerosArray.slice(8, 11));
 
-            /*Puedes agregar más filas aquí según sea necesario */
+tablaHTML += "<tr><td>B</td>";
+tablaHTML += boleto2.map(numero => "<td>" + numero + "</td>").join("");
+tablaHTML += "</tr>";
 
-            tablaHTML += "</table>";
+// Puedes agregar más filas aquí según sea necesario
+
+tablaHTML += "</tbody>";
+tablaHTML += "</table>";
+
 
             // Mostrar la tabla de boletos generados
             document.getElementById("resultado").innerHTML = tablaHTML;
