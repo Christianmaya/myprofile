@@ -142,7 +142,7 @@
       padding: 20px;
       }
     }
-    
+
  /* Estilos para dispositivos móviles */
     @media (max-width: 600px) {
       /* Estilos para la tabla */
@@ -165,7 +165,6 @@
         color: #fff;
       }
     }
-
 
 </style>
 
@@ -235,29 +234,28 @@
 
             // Crear tabla para mostrar los boletos generados
             let tablaHTML = "<table>";
-tablaHTML += "<thead><tr><th colspan='9'>Boletos</th></tr></thead>";
-tablaHTML += "<tbody>";
-tablaHTML += "<tr><td>A</td>";
-tablaHTML += numerosArray.slice(0, 8).map(numero => "<td>" + numero + "</td>").join("");
-tablaHTML += "</tr>";
+            tablaHTML += "<thead><tr><th colspan='9'>Boletos</th></tr></thead>";
+            tablaHTML += "<tbody>";
+            tablaHTML += "<tr><td>A</td>";
+            tablaHTML += numerosArray.slice(0, 8).map(numero => "<td>" + numero + "</td>").join("");
+            tablaHTML += "</tr>";
 
-// Generar boleto 2
-let boleto2 = [];
-// Tomar 5 números aleatorios del boleto 1
-let numerosAleatorios = shuffleArray(numerosArray.slice(0, 8)).slice(0, 5); // Esto lo puedes modificar por el número que quieras
-boleto2 = boleto2.concat(numerosAleatorios);
-// Completar con los números restantes
-boleto2 = boleto2.concat(numerosArray.slice(8, 11));
+            // Generar boleto 2
+            let boleto2 = [];
+            // Tomar 5 números aleatorios del boleto 1
+            let numerosAleatorios = shuffleArray(numerosArray.slice(0, 8)).slice(0, 5); // Esto lo puedes modificar por el número que quieras
+            boleto2 = boleto2.concat(numerosAleatorios);
+            // Completar con los números restantes
+            boleto2 = boleto2.concat(numerosArray.slice(8, 11));
 
-tablaHTML += "<tr><td>B</td>";
-tablaHTML += boleto2.map(numero => "<td>" + numero + "</td>").join("");
-tablaHTML += "</tr>";
+            tablaHTML += "<tr><td>B</td>";
+            tablaHTML += boleto2.map(numero => "<td>" + numero + "</td>").join("");
+            tablaHTML += "</tr>";
 
-// Puedes agregar más filas aquí según sea necesario
+            // Puedes agregar más filas aquí según sea necesario
 
-tablaHTML += "</tbody>";
-tablaHTML += "</table>";
-
+            tablaHTML += "</tbody>";
+            tablaHTML += "</table>";
 
             // Mostrar la tabla de boletos generados
             document.getElementById("resultado").innerHTML = tablaHTML;
