@@ -243,10 +243,10 @@
             // Generar boleto 2
             let boleto2 = [];
             // Tomar 5 números aleatorios del boleto 1
-            let numerosAleatorios = shuffleArray(numerosArray.slice(0, 6)).slice(0, 3); // Esto lo puedes modificar por el número que quieras
+            let numerosAleatorios = shuffleArray(numerosArray.slice(0, 6)).slice(0, 4); // Esto lo puedes modificar por el número que quieras
             boleto2 = boleto2.concat(numerosAleatorios);
             // Completar con los números restantes
-            boleto2 = boleto2.concat(numerosArray.slice(6, 9));
+            boleto2 = boleto2.concat(numerosArray.slice(6, 8));
 
             tablaHTML += "<tr><td style='background-color: #ffa500; color:#000;'>B</td>";
             tablaHTML += boleto2.map(numero => "<td>" + numero + "</td>").join("");
