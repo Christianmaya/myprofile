@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema Inteligente de Sorteo - 00 a 79</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #999;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .paleta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    .numero {
+      width: 40px;
+      height: 40px;
+      background-color: #fff;
+      border: 1px solid #999;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .numero.seleccionado {
+      background-color: #4caf50;
+      color: white;
+      font-weight: bold;
+    }
+    button {
+      padding: 8px 16px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #2196f3;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1976d2;
+    }
+    .resultados {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    table {
+      margin-top: 10px;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      text-align: center;
+      padding: 8px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sistema Inteligente de Sorteo - 00 a 79</h1>
+
+  <div>
+    <p><span class="bold">1.</span> Clic para agregar jugadas manuales (de a 8 números):</p>
+    <div class="paleta" id="paleta"></div>
+    <button onclick="agregarManual()">Agregar Jugada Manual</button>
+    <p>Jugada actual: <span id="jugadaActual"></span></p>
+    <p>Total jugadas manuales: <span id="totalManual">0</span></p>
+
+    <hr>
+
+    <p><span class="bold">2.</span> Generar jugadas automáticas:</p>
+    <button onclick="generarJugadasAutomaticas()">Generar</button>
+    <p>Total jugadas automáticas: <span id="totalAuto">0</span></p>
+
+    <hr>
+
+    <p><span class="bold">3.</span> Calcular mejor combinación de 12 ganadores:</p>
+    <button onclick="calcularGanadores()">Calcular</button>
+    <div class="resultados" id="mejoresResultados"></div>
+    <div class="resultados" id="tablaExcel"></div>
+  </div>
+
+<script>
+const paleta = document.getElementById('paleta');
+const jugadaActual = new Set();
+const jugadasManuales = [];
+const jugadasAutomaticas = [];
+
+for (let i = 0; i <= 99; i++) {
+  const div = document.createElement('div');
+  div.classList.add('numero');
+  div.textContent = i.toString().padStart(2, '0');
+  div.onclick = () => toggleNumero(i, div);
+  paleta.appendChild(div);
+}
+
+function toggleNumero(num, div) {
+  if (jugadaActual.has(num)) {
+    jugadaActual.delete(num);
+    div.classList.remove('seleccionado');
+  } else {
+    if (jugadaActual.size < 8) {
+      jugadaActual.add(num);
+      div.classList.add('seleccionado');
+    } else {
+      alert("Máximo 8 números por jugada");
+    }
+  }
+  document.getElementById('jugadaActual').innerText = [...jugadaActual].sort((a,b)=>a-b).map(n => n.toString().padStart(2, '0')).join(', ');
+}
+
+function agregarManual() {
+  if (jugadaActual.size !== 8) {
+    alert("Debes seleccionar exactamente 8 números");
+    return;
+  }
+  jugadasManuales.push([...jugadaActual]);
+  document.getElementById('totalManual').innerText = jugadasManuales.length;
+  jugadaActual.clear();
+  document.querySelectorAll('.numero').forEach(d => d.classList.remove('seleccionado'));
+  document.getElementById('jugadaActual').innerText = '';
+}
+
+function generarJugadasAutomaticas() {
+  jugadasAutomaticas.length = 0;
+  const TOTAL_JUGADAS = 167686;
+  const porcentajeHumanas = 0.3;
+  const cantidadHumanas = Math.floor(TOTAL_JUGADAS * porcentajeHumanas);
+  const cantidadAleatorias = TOTAL_JUGADAS - cantidadHumanas;
+
+  for (let i = 0; i < cantidadAleatorias; i++) {
+    jugadasAutomaticas.push(generarJugada(8)); // 🎯 Jugadas aleatorias
+  }
+
+  for (let i = 0; i < cantidadHumanas; i++) {
+    jugadasAutomaticas.push(generarJugadaHumana()); // 🎯 Jugadas tipo humano
+  }
+
+  document.getElementById('totalAuto').innerText = jugadasAutomaticas.length;
+}
+
+function generarJugada(cantidad) {
+  const numeros = new Set();
+  while (numeros.size < cantidad) {
+    numeros.add(Math.floor(Math.random() * 100)); // Números del 0 al 79
+  }
+  return [...numeros].sort((a, b) => a - b); // Ordenados de menor a mayor
+}
+
+// Permutación humana (sin repetir, ordenada)
+function generarJugadaHumana() {
+  const numeros = Array.from({ length: 100 }, (_, i) => i);
+
+  // Mezclar con Fisher-Yates
+  for (let i = numeros.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [numeros[i], numeros[j]] = [numeros[j], numeros[i]];
+  }
+
+  // Tomar los primeros 8
+  return numeros.slice(0, 8).sort((a, b) => a - b);
+}
+
+
+function contarGanadores(jugadas, ganadores) {
+  const conteo = { '5': [], '6': [], '7': [], '8': [] };
+  for (let jugada of jugadas) {
+    const aciertos = jugada.filter(n => ganadores.includes(n)).length;
+    if (aciertos >= 5 && aciertos <= 8) conteo[aciertos].push(jugada);
+  }
+  return conteo;
+}
+
+function calcularGanadores() {
+  if (jugadasAutomaticas.length === 0) {
+    alert("Primero genera las jugadas automáticas.");
+    return;
+  }
+  const todas = [...jugadasAutomaticas, ...jugadasManuales];
+  let maxGanadores = -1;
+  let mejoresGanadores = [];
+  let mejoresDetalles = {};
+
+  for (let i = 0; i < 1000; i++) {
+    const ganadores = generarJugada(20);
+    const resultado = contarGanadores(todas, ganadores);
+    const totalGanadores = resultado['5'].length + resultado['6'].length + resultado['7'].length + resultado['8'].length;
+    if (totalGanadores > maxGanadores) {
+      maxGanadores = totalGanadores;
+      mejoresGanadores = ganadores;
+      mejoresDetalles = resultado;
+    }
+  }
+
+  mostrarGanadores(mejoresGanadores, maxGanadores, mejoresDetalles);
+}
+
+function mostrarGanadores(numeros, total, detalles) {
+  const combinacion = numeros.sort((a, b) => a - b).map(n => n.toString().padStart(2, '0'));
+  let texto = `
+    <strong>Mejor combinación de 12 ganadores:</strong><br>
+    ${combinacion.join(', ')}<br><br>
+    <strong>Total jugadas ganadoras (5 a 8 aciertos):</strong> ${total}<br>
+    - Con 5 aciertos: ${detalles['5'].length}<br>
+    - Con 6 aciertos: ${detalles['6'].length}<br>
+    - Con 7 aciertos: ${detalles['7'].length}<br>
+    - Con 8 aciertos: ${detalles['8'].length}<br><br>
+  `;
+  if (detalles['8'].length > 0) {
+    texto += `<strong>Jugadas con 8 aciertos:</strong><br>`;
+    texto += detalles['8'].slice(0, 10).map(j => j.map(n => n.toString().padStart(2, '0')).join(', ')).join('<br>') + '<br><br>';
+  }
+  document.getElementById('mejoresResultados').innerHTML = texto;
+  let tablaHTML = "<table border='1'><tr>";
+  combinacion.forEach(num => tablaHTML += `<td>${num}</td>`);
+  tablaHTML += "</tr></table>";
+  document.getElementById("tablaExcel").innerHTML = tablaHTML;
+  mostrarGanadoresCon7Aciertos(detalles['7']);
+}
+
+function mostrarGanadoresCon7Aciertos(jugadas) {
+  if (jugadas.length === 0) return;
+
+  let html = `<strong>Jugadas con 7 aciertos (máximo 10 mostradas):</strong><br>`;
+  html += jugadas.slice(0, 10).map(j => j.map(n => n.toString().padStart(2, '0')).join(', ')).join('<br>');
+  html += '<br><br>';
+
+  // Crear tabla para copiar en Excel
+  let tabla = "<table border='1'>";
+  tabla += "<tr><th>#</th>" + Array.from({length: 8}, (_, i) => `<th>Número ${i + 1}</th>`).join('') + "</tr>";
+  jugadas.slice(0, 10).forEach((jugada, index) => {
+    tabla += `<tr><td>${index + 1}</td>` + jugada.map(n => `<td>${n.toString().padStart(2, '0')}</td>`).join('') + "</tr>";
+  });
+  tabla += "</table>";
+
+  const div = document.createElement('div');
+  div.innerHTML = html + tabla;
+  document.getElementById('mejoresResultados').appendChild(div);
+}
+
+
+
+// Mostrar en consola algunas jugadas automáticas como ejemplo
+// console.log("Ejemplo de jugadas automáticas:");
+// console.log(jugadasAutomaticas.slice(0, 10));
+
+// console.log("Jugadas humanas (primeras 10):");
+// jugadasAutomaticas.slice(0, 10).forEach((jugada, i) => {
+//  console.log(`Humana ${i + 1}: ${jugada.join(", ")}`);
+// });
+
+</script>
+</body>
+</html>
