@@ -192,8 +192,8 @@
         border: 1px solid #999;
         padding: 5px 10px;
         text-align: center;
-        background-color: #993735;
-        color: rgb(217, 217, 217);
+        background-color: rgb(0, 0, 102);
+        color: #aeb6bf;
         font-weight: bold;
     }
     .x {
@@ -328,7 +328,7 @@
 
         let tablaHTML = "<table>";
         tablaHTML += "<tr><td class='titulo' colspan='11'>Línea de 10 números genera 2 boletos </td></tr>";
-        tablaHTML += "<tr><td style='background-color:#ffa500; color:#000;'>#</td>" + base.map(n => `<td style='background-color:#000; color: rgb(226, 107, 10);'>${n}</td>`).join("") + "</tr>";
+        tablaHTML += "<tr><td style='background-color:#ffa500; color:#000;'>#</td>" + base.map(n => `<td style='background-color:#000; color: rgb(0, 176, 80);'>${n}</td>`).join("") + "</tr>";
         tablaHTML += generarFila("A", xPosA, boletoA);
         tablaHTML += generarFila("B", xPosB, boletoB);
         tablaHTML += "</table>";
