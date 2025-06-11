@@ -2,206 +2,613 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Sistema Inteligente de Sorteo - 00 a 79</title>
+  <title>Sistema Inteligente de Sorteo | Juegos Poceados</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      background-color: #999;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    .bold {
-      font-weight: bold;
-    }
-    .paleta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-bottom: 10px;
-    }
-    .numero {
-      width: 40px;
-      height: 40px;
-      background-color: #fff;
-      border: 1px solid #999;
-      border-radius: 5px;
-      text-align: center;
-      line-height: 40px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .numero.seleccionado {
-      background-color: #4caf50;
-      color: white;
-      font-weight: bold;
-    }
-    button {
-      padding: 8px 16px;
-      margin: 10px 0;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      background-color: #2196f3;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #1976d2;
-    }
-    .resultados {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    table {
-      margin-top: 10px;
-      width: 100%;
-      border-collapse: collapse;
-    }
-    td {
-      text-align: center;
-      padding: 8px;
-      font-weight: bold;
-    }
+  font-family: 'Segoe UI', 'Ubuntu', sans-serif;
+  background-color: #23252E;
+  color: #E0E0E0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Paneles */
+.left-panel, .right-panel {
+  flex: 1;
+  background-color: #2A2C37;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+
+/* Títulos */
+h1 {
+  text-align: center;
+  color: #00F5FF;
+  font-size: 20px;
+}
+
+/* Texto en negrita */
+.bold {
+  font-weight: bold;
+}
+
+/* Paleta de números boletos*/
+.paleta {
+  gap: 6px; /* espacio entre los labels */
+  max-width: 430px; /* aprox 10 * 35px + espacios */
+}
+
+.paleta {
+  display: none;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 10px 0;
+  justify-content: center;
+  padding: 10px;
+  background-color: #1E1F29;
+  border: 2px dashed #5D6D7E;
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px rgba(93, 109, 126, 0.1);
+}
+
+
+/* Estilo de cada número */
+.numero {
+  width: 35px;
+  height: 35px;
+  font-size: 14px;
+  line-height: 35px;
+  background-color: #3A3D4D;
+  border: 1px solid #5D6D7E;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  color: #00F5FF;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.numero:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 6px #00F5FF;
+}
+
+.numero.seleccionado {
+  background-color: #00F5FF;
+  color: #23252E;
+  border: 1px solid #1E8449;
+}
+
+/* Entradas y botones */
+input, button {
+  font-size: 14px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+input {
+  white-space: nowrap;
+  border: 1px solid #3c3f4f;
+  background-color: #1e1f29;
+  color: #14db2e;
+}
+
+button {
+  border: none;
+  background-color: #00F5FF;
+  color: #23252E;
+  font-weight: bold;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center; /* Alinea verticalmente texto e imagen */
+  gap: 6px; /* Espacio entre imagen y texto (ajustable) */
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #23252E;
+  border: none;
+}
+
+button img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+button:hover {
+  background-color: #1ab65b;
+  color: #dcdde1;
+}
+
+/* Encabezado */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2C3E50;
+  color: #00F5FF;
+  padding: 10px 20px;
+  border-radius: 0 0 12px 12px;
+}
+
+/* Logo centrado */
+.logo-center {
+  flex: 1;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #00F5FF;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00F5FF;
+}
+
+/* Imagen del logo */
+.logo-img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Botón de volver */
+.volver-btn {
+  background-color: #E74C3C;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.volver-btn:hover {
+  background-color: #C0392B;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.8);
+}
+
+/* ===== TABLA ESTILO EXCEL ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+th, td {
+  padding: 4px 5px;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid #3c3f4f;
+  background-color: #1e1f29;
+  color: #dcdde1;
+  font-weight: 500;
+}
+
+th {
+  background-color: #00f5ff;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== RESULTADOS (como hoja de cálculo) ===== */
+.resultados {
+  margin-top: 15px;
+  background-color: #1e1f29;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  overflow-x: auto;
+  box-shadow: inset 0 0 5px rgba(255,255,255,0.1);
+}
+
+
+/* Pie de página */
+footer {
+  background-color: #2C3E50;
+  color: #FFF;
+  text-align: center;
+  padding: 12px;
+  margin-top: 30px;
+  font-size: 13px;
+}
+
+/* Enlaces */
+a {
+  text-decoration: none;
+  color: #C0392B;
+}
+
+/* Estilo personalizado */
+span1 {
+  font-size: 16px;
+  background: #05050e;
+  padding: 8px;
+  border-radius: 5px;
+  color: #2dec07;
+  font-weight: bold;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contenedor-resultados {
+    width: 100%;
+    order: 2;
+  }
+
+  .contenedor-info {
+    width: 100%;
+    order: 1;
+  }
+
+  .info-nist {
+    max-width: 100%;
+    padding: 1rem;
+    border-left: 4px solid #85929E;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    color: #a3a0a0;
+  }
+}
+
+#paleta1Numeros {
+  gap: 6px; /* espacio entre los labels */
+  max-width: 450px; /* aprox 10 * 35px + espacios */
+}
+
+#paleta1Numeros label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 14px;
+  background-color: #3A3D4D;
+  border: 1px solid #5D6D7E;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  color: #00F5FF;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.3s;
+  position: relative;
+}
+
+#paleta1Numeros label:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 6px #00F5FF;
+}
+
+#paleta1Numeros input[type="checkbox"] {
+  display: none;
+}
+
+#paleta1Numeros input[type="checkbox"]:checked + span {
+  background-color: #00F5FF;
+  color: #23252E;
+  border: 1px solid #1E8449;
+}
+
+#paleta1Numeros label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 14px;
+  background-color: #3A3D4D;
+  border: 1px solid #5D6D7E;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  color: #00F5FF;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
+  position: relative;
+  margin: 0px;
+}
+
+#paleta1Numeros label:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 6px #00F5FF;
+}
+
+#paleta1Numeros input[type="checkbox"] {
+  display: none;
+}
+
+#paleta1Numeros input[type="checkbox"]:checked + span {
+  background-color: #00F5FF;
+  color: #23252E;
+  border: 1px solid #1E8449;
+}
+
+#paleta1Numeros span {
+  display: block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: red; /* color para no seleccionado */
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Cuando checkbox está checked, cambiar color */
+#paleta1Numeros input[type="checkbox"]:checked + span {
+  background-color: #4edb42; /* verde cuando está seleccionado */
+  color: #23252E;
+}
+
   </style>
 </head>
 <body>
-  <h1>Sistema Inteligente de Sorteo - 00 a 79</h1>
 
-  <div>
-    <p><span class="bold">1.</span> Clic para agregar jugadas manuales (de a 8 números):</p>
-    <div class="paleta" id="paleta"></div>
-    <button onclick="agregarManual()">Agregar Jugada Manual</button>
-    <p>Jugada actual: <span id="jugadaActual"></span></p>
-    <p>Total jugadas manuales: <span id="totalManual">0</span></p>
+  <header class="header">
+    <img src="logo/footer-logo.png" class="logo-img" alt="Logo">
+    <div class="logo-center" id="live-clock">00:00:00</div>
+    <a href="index.html" class="volver-btn">Volver al inicio</a>
+  </header>
 
-    <hr>
+  <h1>Sistema Inteligente para simular sorteos Poceados</h1>
 
-    <p><span class="bold">2.</span> Generar jugadas automáticas:</p>
-    <button onclick="generarJugadasAutomaticas()">Generar</button>
-    <p>Total jugadas automáticas: <span id="totalAuto">0</span></p>
+  <div class="container">
 
-    <hr>
+    <!-- Panel izquierdo -->
+<div class="left-panel">
+  <p><strong>Ideal para entrenar y elegir la mejor combinación posible para:</strong></p>
+  <p>QUINIELA PLUS, QUINIELA SUPER PLUS, QUINIELA CHANCE PLUS, QUINIELA POCEADA, POCEADA MISIONERA, POCEADA ENTRE RIOS y todos los juegos Poceados que cumplan estos parámetros ( 5 - 8 aciertos / 20 números ganadores ). </p>
+  <p><strong>1.</strong> Agregar boleto manual (opcional)</p>
+  <div class="paleta" id="paleta"></div>
+  <button onclick="mostrarPaleta(); agregarManual()">Agregar boleto manual</button>
+  <p>Boletos actual: <span id="jugadaActual"></span></p>
+  <p><strong>Total boletos manuales: </strong> <span1 id="totalManual">0</span1> <em>Esto simula ser un boleto real que jugaria en la loteria oficial</em></p>
 
-    <p><span class="bold">3.</span> Calcular mejor combinación de 12 ganadores:</p>
-    <button onclick="calcularGanadores()">Calcular</button>
-    <div class="resultados" id="mejoresResultados"></div>
-    <div class="resultados" id="tablaExcel"></div>
+  <hr>
+
+  <p><strong>2.</strong> Generar boletos automáticos (47000 por defecto)</p>
+  <input type="number" id="cantidadJugadas" value="47000" min="1"><span1 id="totalAuto">0</span1>
+  <button onclick="generarJugadasAutomaticas()">Generar</button>
+  <p><strong>Total boletos automáticas: </strong><em>Esto simula ser boletos real que podrian jugar los demas usuarios en la loteria oficial</em></p>
+
+  <hr>
+
+  <p><strong>3.</strong> Sorteos a simular (1 - 1000): <em>Indica cuántos sorteos deseas simular. Por ejemplo, la Quiniela Poceada realiza 6 sorteos por semana.</em></p>
+  <input type="number" id="cantidadSorteos" value="1" min="1" max="1000">
+
+  <hr>
+  <p><strong>5.</strong> En este punto, podés quitar los números que no querés que participen en el sorteo de los 20 números ganadores (opcional). Esto te permite personalizar el sorteo y excluir combinaciones que no te interesan.</p>  
+  <div id="paleta1Numeros" class="paleta"></div>
+  <button onclick="toggleSelector()" style="background-color:#ba4a00; color:#E0E0E0;">Elegir rango de número</button>
+
+  <p><strong>4.</strong> Calcular mejor combinación ganadora:</p>
+  <button onclick="calcularGanadores()"><img src="img/calcular2.png"> Calcular Ganadores</button>
+  <a href="Sistema-Sorteos-Personalizado.html">
+    <button style="background-color: #3498db;"><img src="img/actualizar.png"> Actualizar Sistema</button>
+  </a>
+
+  <!-- ⚠️ INFO NIST AGREGADA AQUÍ -->
+  <div class="info-nist" style="margin-top: 20px; padding: 10px; border-left: 4px solid #85929e;">
+    <p><em><strong style="color:#85929e;">La implementación cumple con el estándar NIST SP 800-90A</strong>
+    <a href="https://en.wikipedia.org/wiki/NIST_SP_800-90A" target="_blank" rel="noopener noreferrer">Saber más...</a></em></p>
+    <ul style="padding-left: 20px;">
+      <li><strong>1.</strong> NIST como función de generación de bits: <strong>Sí</strong> <img src="img/2705.png" width="16px"></li>
+      <li><strong>2.</strong> Semilla inicial segura (entropía): <strong>Sí</strong> <img src="img/2705.png" width="16px"></li>
+      <li><strong>3.</strong> Reutilización del generador para múltiples salidas: <strong>Sí</strong> <img src="img/2705.png" width="16px"></li>
+      <li><strong>4.</strong> Uso de una API criptográfica segura: <strong>Sí</strong> <img src="img/2705.png" width="16px"></li>
+      <li><strong>5.</strong> Funciona de manera muy similar a un DRBG certificado <strong>Sí</strong> <img src="img/2705.png" width="16px"></li>
+    </ul>
+    <p>¡La implementación cumple con los principales criterios del estándar NIST SP 800-90A para generadores determinísticos de números aleatorios seguros!</p>
+    <p><em><strong style="color:#928f8f;">
+      Este sistema funciona así:<br><br>
+      1. Puedes agregar todos los boletos que desees para simular qué número genera el sistema teniendo en cuenta los boletos ingresados.<br><br>
+      2. Puedes generar los 47.000 boletos por defecto e ir cambiando la cantidad si lo deseas.<br><br>
+      3. Luego haz clic en "Calcular Ganadores", esperá un momento y obtendrás un resultado basado en las posibles combinaciones.<br><br>
+      4. El algoritmo calculará todas las combinaciones posibles a partir de 1 sorteo.<br><br>
+      5. Los boletos que ingresan al sistema tienen una composición estimada de:<br>
+      - 0.5% seleccionados por humanos<br>
+      - 0.3% generados por permutaciones<br>
+      - 0.2% aleatorios
+    </strong></em></p>
   </div>
+</div>
+
+
+<!-- Panel derecho -->
+<div class="right-panel">
+  
+  <div class="resultados" id="mejoresResultados"></div>
+  <div class="resultados" id="tablaExcel"></div>
+  <div class="resultados" id="boletos8"></div>
+  <div class="resultados" id="boletos7"></div>
+  <button onclick="copiarResultadosExcel()"><img src="img/copiar.png"> Copiar todo para Excel</button>
+ </div>
+</div>
+
+<footer style="margin-top: 50px; padding: 20px; background-color: #000; border-top: 1px solid #333; font-family: Arial, sans-serif;">
+  <p style="color: #FF5252; font-weight: bold; text-align: center;">
+    Importante: Este sistema está diseñado para mejorar tu experiencia y optimizar tus combinaciones. No garantiza un boleto ganador al 100%.
+  </p>
+
+  <p style="text-align: center; color: #ccc; font-size: 14px; margin-top: 20px;">
+    <script>
+  const year = new Date().getFullYear();
+  document.querySelector("footer p:last-child").innerHTML = `© ${year} SimplePlays – Todos los derechos reservados.`;
+</script>
+</p>
+</footer>
 
 <script>
-const paleta = document.getElementById('paleta');
-const jugadaActual = new Set();
-const jugadasManuales = [];
-const jugadasAutomaticas = [];
-
-for (let i = 0; i <= 99; i++) {
-  const div = document.createElement('div');
-  div.classList.add('numero');
-  div.textContent = i.toString().padStart(2, '0');
-  div.onclick = () => toggleNumero(i, div);
-  paleta.appendChild(div);
-}
-
-function toggleNumero(num, div) {
-  if (jugadaActual.has(num)) {
-    jugadaActual.delete(num);
-    div.classList.remove('seleccionado');
-  } else {
-    if (jugadaActual.size < 8) {
-      jugadaActual.add(num);
-      div.classList.add('seleccionado');
+  const paleta = document.getElementById('paleta');
+  const jugadaActual = new Set();
+  const jugadasManuales = [];
+  const jugadasAutomaticas = [];
+  
+  for (let i = 0; i <= 99; i++) {
+    const div = document.createElement('div');
+    div.classList.add('numero');
+    div.textContent = i.toString().padStart(2, '0');
+    div.onclick = () => toggleNumero(i, div);
+    paleta.appendChild(div);
+  }
+  
+  function toggleNumero(num, div) {
+    if (jugadaActual.has(num)) {
+      jugadaActual.delete(num);
+      div.classList.remove('seleccionado');
     } else {
-      alert("Máximo 8 números por jugada");
+      if (jugadaActual.size < 8) {
+        jugadaActual.add(num);
+        div.classList.add('seleccionado');
+      } else {
+        alert("Máximo 8 números por boleto");
+      }
     }
+    document.getElementById('jugadaActual').innerText = [...jugadaActual].sort((a,b)=>a-b).map(n => n.toString().padStart(2, '0')).join(', ');
   }
-  document.getElementById('jugadaActual').innerText = [...jugadaActual].sort((a,b)=>a-b).map(n => n.toString().padStart(2, '0')).join(', ');
-}
-
-function agregarManual() {
-  if (jugadaActual.size !== 8) {
-    alert("Debes seleccionar exactamente 8 números");
-    return;
+  
+  function agregarManual() {
+    if (jugadaActual.size !== 8) {
+      alert("Debes seleccionar exactamente 8 números");
+      return;
+    }
+    jugadasManuales.push([...jugadaActual]);
+    document.getElementById('totalManual').innerText = jugadasManuales.length;
+    jugadaActual.clear();
+    document.querySelectorAll('.numero').forEach(d => d.classList.remove('seleccionado'));
+    document.getElementById('jugadaActual').innerText = '';
   }
-  jugadasManuales.push([...jugadaActual]);
-  document.getElementById('totalManual').innerText = jugadasManuales.length;
-  jugadaActual.clear();
-  document.querySelectorAll('.numero').forEach(d => d.classList.remove('seleccionado'));
-  document.getElementById('jugadaActual').innerText = '';
-}
+  
+  function generarJugadasAutomaticas() {
+    jugadasAutomaticas.length = 0;
+    const TOTAL_JUGADAS = parseInt(document.getElementById('cantidadJugadas').value) || 0;
+    const porcentajeHumanas = 0.5;
+    const cantidadHumanas = Math.floor(TOTAL_JUGADAS * porcentajeHumanas);
+    const cantidadAleatorias = TOTAL_JUGADAS - cantidadHumanas;
+  
+    for (let i = 0; i < cantidadAleatorias; i++) {
+      jugadasAutomaticas.push(generarJugada(8)); // 🎯 Jugadas aleatorias
+    }
+  
+    for (let i = 0; i < cantidadHumanas; i++) {
+      jugadasAutomaticas.push(generarJugadaHumana()); // 🎯 Jugadas tipo humano
+    }
 
-function generarJugadasAutomaticas() {
-  jugadasAutomaticas.length = 0;
-  const TOTAL_JUGADAS = 130701;
-  const porcentajeHumanas = 0.3;
-  const cantidadHumanas = Math.floor(TOTAL_JUGADAS * porcentajeHumanas);
-  const cantidadAleatorias = TOTAL_JUGADAS - cantidadHumanas;
+    // me sirve para ver en el navegador 
+    console.log("Jugadas Humanas generadas:", jugadasAutomaticas.slice(cantidadAleatorias));
 
-  for (let i = 0; i < cantidadAleatorias; i++) {
-    jugadasAutomaticas.push(generarJugada(8)); // 🎯 Jugadas aleatorias
+    document.getElementById('totalAuto').innerText = jugadasAutomaticas.length;
   }
-
-  for (let i = 0; i < cantidadHumanas; i++) {
-    jugadasAutomaticas.push(generarJugadaHumana()); // 🎯 Jugadas tipo humano
-  }
-
-  document.getElementById('totalAuto').innerText = jugadasAutomaticas.length;
-}
-
-function generarJugada(cantidad) {
+  
+  function generarJugada(cantidad, maximo = 99) {
   const numeros = new Set();
   while (numeros.size < cantidad) {
-    numeros.add(Math.floor(Math.random() * 100)); // Números del 0 al 79
+    numeros.add(Math.floor(Math.random() * (maximo + 1))); // Números del 0 al maximo
   }
-  return [...numeros].sort((a, b) => a - b); // Ordenados de menor a mayor
+  return [...numeros].sort((a, b) => a - b);
+
+  // me sirve para ver en el navegador
+  console.log("Jugadas Manuales:", jugadasManuales);
 }
 
-// Permutación humana (sin repetir, ordenada)
-function generarJugadaHumana() {
-  const numeros = Array.from({ length: 100 }, (_, i) => i);
-
-  // Mezclar con Fisher-Yates
-  for (let i = numeros.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [numeros[i], numeros[j]] = [numeros[j], numeros[i]];
+  // Permutación humana (sin repetir, ordenada)
+  function generarJugadaHumana() {
+    const numeros = Array.from({ length: 100 }, (_, i) => i);
+  
+    // Mezclar con Fisher-Yates
+    for (let i = numeros.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [numeros[i], numeros[j]] = [numeros[j], numeros[i]];
+    }
+  
+    // Tomar los primeros 8
+    return numeros.slice(0, 8).sort((a, b) => a - b);
+  }
+  
+  
+  function contarGanadores(jugadas, ganadores) {
+    const conteo = { '5': [], '6': [], '7': [], '8': [] };
+    for (let jugada of jugadas) {
+      const aciertos = jugada.filter(n => ganadores.includes(n)).length;
+      if (aciertos >= 5 && aciertos <= 8) conteo[aciertos].push(jugada);
+    }
+    return conteo;
   }
 
-  // Tomar los primeros 8
-  return numeros.slice(0, 8).sort((a, b) => a - b);
+  // ---------------------------Generar checkboxes del 00 al 99 ---------------------------
+ const paleta1Numeros = document.getElementById('paleta1Numeros');
+for (let i = 0; i <= 99; i++) {
+  const num = i.toString().padStart(2, '0');
+
+  const label = document.createElement('label');
+
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.value = num;
+  checkbox.checked = true;
+  checkbox.className = 'numero-paleta';
+
+  const span = document.createElement('span');
+  span.textContent = num;
+
+  label.appendChild(checkbox);
+  label.appendChild(span);
+  paleta1Numeros.appendChild(label);
 }
 
-
-function contarGanadores(jugadas, ganadores) {
-  const conteo = { '5': [], '6': [], '7': [], '8': [] };
-  for (let jugada of jugadas) {
-    const aciertos = jugada.filter(n => ganadores.includes(n)).length;
-    if (aciertos >= 5 && aciertos <= 8) conteo[aciertos].push(jugada);
-  }
-  return conteo;
-}
-
+ 
+// ---------------logica para generar los 20 number ---------------------
 function calcularGanadores() {
-  if (jugadasAutomaticas.length === 0) {
-    alert("Primero genera las jugadas automáticas.");
+  if (jugadasAutomaticas.length === 0 && jugadasManuales.length === 0) {
+    alert("Primero genera las jugadas automáticas o manuales.");
     return;
   }
+
+  const cantidadInput = document.getElementById('cantidadSorteos');
+  const cantidad = parseInt(cantidadInput.value);
+
+  if (isNaN(cantidad) || cantidad <= 0) {
+    alert("Por favor ingresa una cantidad válida de sorteos.");
+    return;
+  }
+
   const todas = [...jugadasAutomaticas, ...jugadasManuales];
-  let maxGanadores = -1;
+  let maxGanadores = 0;
   let mejoresGanadores = [];
   let mejoresDetalles = {};
 
-  for (let i = 0; i < 1000; i++) {
-    const ganadores = generarJugada(20);
+  for (let i = 0; i < cantidad; i++) {
+    const ganadores = generarGanadoresPersonalizados(20);
+    if (!ganadores.length) continue; // Si no hay suficientes seleccionados, salta el intento
+
     const resultado = contarGanadores(todas, ganadores);
-    const totalGanadores = resultado['5'].length + resultado['6'].length + resultado['7'].length + resultado['8'].length;
+    const totalGanadores = ['5', '6', '7', '8'].reduce((sum, key) => sum + (resultado[key]?.length || 0), 0);
+
     if (totalGanadores > maxGanadores) {
       maxGanadores = totalGanadores;
       mejoresGanadores = ganadores;
@@ -209,63 +616,187 @@ function calcularGanadores() {
     }
   }
 
+  if (mejoresGanadores.length === 0) {
+    alert("No se pudo generar ninguna combinación válida.");
+    return;
+  }
+
   mostrarGanadores(mejoresGanadores, maxGanadores, mejoresDetalles);
 }
 
+function generarGanadoresPersonalizados(cantidad) {
+  const seleccionados = Array.from(document.querySelectorAll('.numero-paleta:checked'))
+    .map(cb => parseInt(cb.value));
+
+  if (seleccionados.length < cantidad) {
+    alert("Seleccionaste menos de 20 números. Por favor selecciona al menos 20.");
+    return [];
+  }
+
+  const copia = [...seleccionados];
+  const resultado = [];
+
+  // Fisher-Yates shuffle parcial
+  for (let i = 0; i < cantidad; i++) {
+    const indice = Math.floor(Math.random() * copia.length);
+    resultado.push(copia.splice(indice, 1)[0]);
+  }
+
+  return resultado.sort((a, b) => a - b);
+}
+// ---------------./logica para generar los 20 number ---------------------
+
 function mostrarGanadores(numeros, total, detalles) {
   const combinacion = numeros.sort((a, b) => a - b).map(n => n.toString().padStart(2, '0'));
-  let texto = `
-    <strong>Mejor combinación de 12 ganadores:</strong><br>
-    ${combinacion.join(', ')}<br><br>
-    <strong>Total jugadas ganadoras (5 a 8 aciertos):</strong> ${total}<br>
-    - Con 5 aciertos: ${detalles['5'].length}<br>
-    - Con 6 aciertos: ${detalles['6'].length}<br>
-    - Con 7 aciertos: ${detalles['7'].length}<br>
-    - Con 8 aciertos: ${detalles['8'].length}<br><br>
+
+  const filaHTML = combinacion.map(n => `<td style="padding: 6px; text-align: center;">${n}</td>`).join('');
+  const tablaCombinacion = `
+    <table border="1" style="border-collapse: collapse; margin-bottom: 20px; width: 100%;">
+      <tr style="background-color: #f2f2f2;">
+        ${combinacion.map((_, i) => `<th style="padding: 6px;">${i + 1}</th>`).join('')}
+      </tr>
+      <tr>${filaHTML}</tr>
+    </table>
   `;
-  if (detalles['8'].length > 0) {
-    texto += `<strong>Jugadas con 8 aciertos:</strong><br>`;
-    texto += detalles['8'].slice(0, 10).map(j => j.map(n => n.toString().padStart(2, '0')).join(', ')).join('<br>') + '<br><br>';
-  }
+
+  const tablaResumen = `
+    <table border="1" style="border-collapse: collapse; width: 100%; margin-right: 20px;">
+      <tr>
+        <th style="padding: 8px;">Aciertos</th>
+        <th style="padding: 8px;">Cantidad de Boletos</th>
+      </tr>
+      <tr><td style="padding: 8px;">8</td><td style="padding: 8px; color:rgba(0, 0, 255); font-size:18px;">${detalles['8'].length}</td></tr>
+      <tr><td style="padding: 8px;">7</td><td style="padding: 8px; color:rgba(0, 176, 240);">${detalles['7'].length}</td></tr>
+      <tr><td style="padding: 8px;">6</td><td style="padding: 8px; color:rgba(0, 176, 80);">${detalles['6'].length}</td></tr>
+      <tr><td style="padding: 8px;">5</td><td style="padding: 8px; color:rgba(255, 102, 0);">${detalles['5'].length}</td></tr>
+      <tr>
+        <td style="padding: 8px;"><strong>Total</strong></td>
+        <td style="padding: 8px; font-size:20px; "><strong >${total}</strong></td>
+      </tr>
+    </table>
+  `;
+
+  const tabla8 = generarTablaBoletos(detalles['8'], 8);
+  const tabla7 = generarTablaBoletos(detalles['7'], 7);
+
+  const contenedorTablas = `
+    <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+      <div style="flex: 1;">${tablaResumen}</div>
+      <div style="flex: 2;">
+        ${tabla8}
+        ${tabla7}
+      </div>
+    </div>
+  `;
+
+  let texto = `
+    <h3 style="color: #2ecc71;">Mejor resultado para analizar:</h3>
+    <p><strong>Este resultado se basa en los boletos que generaste automáticamente: </strong><em>considerando la cantidad real de boletos que podrían jugar los demás usuarios en la lotería oficial.</em></p>
+
+    ${tablaCombinacion}
+    ${contenedorTablas}
+  `;
+
   document.getElementById('mejoresResultados').innerHTML = texto;
-  let tablaHTML = "<table border='1'><tr>";
-  combinacion.forEach(num => tablaHTML += `<td>${num}</td>`);
-  tablaHTML += "</tr></table>";
-  document.getElementById("tablaExcel").innerHTML = tablaHTML;
-  mostrarGanadoresCon7Aciertos(detalles['7']);
 }
 
-function mostrarGanadoresCon7Aciertos(jugadas) {
-  if (jugadas.length === 0) return;
+function generarTablaBoletos(jugadas, aciertos) {
+  if (jugadas.length === 0) return "";
 
-  let html = `<strong>Jugadas con 7 aciertos (máximo 10 mostradas):</strong><br>`;
-  html += jugadas.slice(0, 10).map(j => j.map(n => n.toString().padStart(2, '0')).join(', ')).join('<br>');
-  html += '<br><br>';
+  let tabla = `
+    <p style="margin-bottom: 8px;">Boletos con ${aciertos} aciertos <em>(se muestran los primeros 10 boletos):</em></p>
+    <table border="1" style="border-collapse: collapse; width: 100%; margin-bottom: 15px;">
+      <tr style="background-color:  #f39c12;">
+        <th style="background-color: #f39c12;">#</th>
+        ${Array.from({ length: 8 }, (_, i) => `<th> ${i + 1}</th>`).join('')}
+      </tr>
+  `;
 
-  // Crear tabla para copiar en Excel
-  let tabla = "<table border='1'>";
-  tabla += "<tr><th>#</th>" + Array.from({length: 8}, (_, i) => `<th>Número ${i + 1}</th>`).join('') + "</tr>";
   jugadas.slice(0, 10).forEach((jugada, index) => {
-    tabla += `<tr><td>${index + 1}</td>` + jugada.map(n => `<td>${n.toString().padStart(2, '0')}</td>`).join('') + "</tr>";
+    tabla += `<tr><td style="background-color: #f39c12; color: #000;">${index + 1}</td>` +
+      jugada.map(n => `<td>${n.toString().padStart(2, '0')}</td>`).join('') +
+      `</tr>`;
   });
-  tabla += "</table>";
 
-  const div = document.createElement('div');
-  div.innerHTML = html + tabla;
-  document.getElementById('mejoresResultados').appendChild(div);
+  tabla += `</table>`;
+  return tabla;
 }
-
-
-
-// Mostrar en consola algunas jugadas automáticas como ejemplo
-// console.log("Ejemplo de jugadas automáticas:");
-// console.log(jugadasAutomaticas.slice(0, 10));
-
-// console.log("Jugadas humanas (primeras 10):");
-// jugadasAutomaticas.slice(0, 10).forEach((jugada, i) => {
-//  console.log(`Humana ${i + 1}: ${jugada.join(", ")}`);
-// });
 
 </script>
+
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById('live-clock').textContent = `${hours}:${minutes}:${seconds}`;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock(); // llamar al cargar
+</script>
+
+
+<script>
+ function mostrarPaleta() {
+  document.getElementById('paleta').style.display = 'flex';
+  document.getElementById('paleta1Numeros').style.display = 'none';
+}
+
+function toggleSelector() {
+  const paleta1 = document.getElementById('paleta1Numeros');
+  const paleta = document.getElementById('paleta');
+
+  const isHidden = paleta1.style.display === 'none' || paleta1.style.display === '';
+  paleta1.style.display = isHidden ? 'flex' : 'none';
+
+  // Oculta la otra paleta si se muestra esta
+  if (isHidden) paleta.style.display = 'none';
+}
+
+</script>
+
+<script>
+function copiarResultadosExcel() {
+  const resultados = document.getElementById("mejoresResultados")?.innerText || "";
+  const tabla = document.getElementById("tablaExcel")?.innerText || "";
+  const boletos8 = document.getElementById("boletos8")?.innerText || "";
+  const boletos7 = document.getElementById("boletos7")?.innerText || "";
+
+  let textoCompleto = "";
+
+  if (resultados.trim()) {
+    textoCompleto += "📢 RESULTADO:\n" + resultados.trim() + "\n\n";
+  }
+
+  if (tabla.trim()) {
+    textoCompleto += "🏆 BOLETOS GANADORES:\n" + tabla.trim() + "\n\n";
+  }
+
+  if (boletos8.trim()) {
+    textoCompleto += "🎯 BOLETOS CON 8 ACIERTOS:\n" + boletos8.trim() + "\n\n";
+  }
+
+  if (boletos7.trim()) {
+    textoCompleto += "✨ BOLETOS CON 7 ACIERTOS:\n" + boletos7.trim() + "\n\n";
+  }
+
+  if (textoCompleto.trim() === "") {
+    alert("No hay nada para copiar.");
+    return;
+  }
+
+  navigator.clipboard.writeText(textoCompleto).then(() => {
+    alert("✅ ¡Todo copiado! Pegalo en Excel con Ctrl+V.");
+  }).catch(err => {
+    console.error("Error al copiar: ", err);
+    alert("Hubo un error al copiar.");
+  });
+}
+</script>
+
+  
 </body>
 </html>
