@@ -507,7 +507,7 @@ span1 {
   function generarJugadasAutomaticas() {
     jugadasAutomaticas.length = 0;
     const TOTAL_JUGADAS = parseInt(document.getElementById('cantidadJugadas').value) || 0;
-    const porcentajeHumanas = 0.5;
+    const porcentajeHumanas = 0.3;
     const cantidadHumanas = Math.floor(TOTAL_JUGADAS * porcentajeHumanas);
     const cantidadAleatorias = TOTAL_JUGADAS - cantidadHumanas;
   
