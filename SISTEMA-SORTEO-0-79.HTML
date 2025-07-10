@@ -678,6 +678,7 @@ function mostrarGanadores(numeros, total, detalles) {
 
   const tabla8 = generarTablaBoletos(detalles['8'], 8);
   const tabla7 = generarTablaBoletos(detalles['7'], 7);
+const tabla6 = generarTablaBoletos(detalles['6'], 6);
 
   const contenedorTablas = `
     <div style="display: flex; gap: 20px; margin-bottom: 30px;">
@@ -685,6 +686,7 @@ function mostrarGanadores(numeros, total, detalles) {
       <div style="flex: 2;">
         ${tabla8}
         ${tabla7}
+        ${tabla6}
       </div>
     </div>
   `;
